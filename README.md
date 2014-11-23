@@ -1,4 +1,4 @@
-#rust-imgtype [![Build Status](https://travis-ci.org/abustin/rust-imgtype.svg)](https://travis-ci.org/abustin/rust-imgtype.svg)
+#rust-imgtype [![Build Status](https://travis-ci.org/abustin/rust-imgtype.svg?branch=master)](https://travis-ci.org/abustin/rust-imgtype)
 
 Finds your image type by looking at the files header.  No external dependencies.
 
