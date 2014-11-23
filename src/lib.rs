@@ -1,5 +1,5 @@
 #[deriving(Show)]
-pub enum FileFormat { JPEG, PNG, WEBP, GIF, TIFF }
+pub enum ImageType { JPEG, PNG, WEBP, GIF, TIFF }
 
 static JPEG_SPEC:[Option<u8>, ..11] = [Some(0xFF), Some(0xD8), Some(0xFF), Some(0xE0), 
                                        None,       None,       Some(0x4A), Some(0x46), 
@@ -17,15 +17,15 @@ static GIF_SPEC:[Option<u8>, ..6]   = [Some(0x47), Some(0x49), Some(0x46), Some(
 
 static TIFF_SPEC:[Option<u8>, ..3]   = [Some(0x49), Some(0x20), Some(0x49)];
 
-static FILE_TESTS:[(FileFormat, &'static [Option<u8>]), ..5] = [
-    (FileFormat::JPEG, &JPEG_SPEC),
-    (FileFormat::PNG , &PNG_SPEC ),
-    (FileFormat::WEBP, &WEBP_SPEC),
-    (FileFormat::GIF , &GIF_SPEC ),
-    (FileFormat::TIFF, &TIFF_SPEC)
+static FILE_TESTS:[(ImageType, &'static [Option<u8>]), ..5] = [
+    (ImageType::JPEG, &JPEG_SPEC),
+    (ImageType::PNG , &PNG_SPEC ),
+    (ImageType::WEBP, &WEBP_SPEC),
+    (ImageType::GIF , &GIF_SPEC ),
+    (ImageType::TIFF, &TIFF_SPEC)
 ];
 
-pub fn from_buffer(file:&[u8]) -> Option<FileFormat> {
+pub fn from_buffer(file:&[u8]) -> Option<ImageType> {
     match FILE_TESTS.iter().filter(|aspec| {
         file.iter().zip(aspec.val1().iter()).all(|file_spec| {
             let (file,spec) = file_spec;
