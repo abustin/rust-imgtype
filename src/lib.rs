@@ -48,5 +48,11 @@ pub fn from_buffer(file:&[u8]) -> Option<ImageType> {
 #[test]
 fn it_works() {
     let file = [0xFFu8, 0xD8, 0xFF, 0xE0, 0xA1, 0xA2, 0x4A, 0x46, 0x49, 0x46, 0x00];
-    println!("{}", from_buffer(&file));
+
+    let img_type:Option<ImageType> = from_buffer(&file);
+
+    match img_type {
+        Some(img_type) => println!("Image Type is {}!", img_type),
+        None           => println!("Unknown Image Type.")
+    };
 }
